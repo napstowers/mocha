@@ -9,8 +9,10 @@ local utils = require("./roblox_packages/utils")
 
 local widget_class = require("@self/widget")
 
+local assets = script:WaitForChild("assets") :: Instance & { [string]: Instance }
+
 function build(plugin_global: unknown)
-	local gui = script.assets.gui:Clone()
+	local gui = assets.gui:Clone()
 
 	utils.plugin_global.set(plugin_global)
 

@@ -1,11 +1,9 @@
-local fusion = require("../../../roblox_packages/fusion")
+local vide = require("../../../roblox_packages/vide")
+local types = require("../types")
 
-local peek = fusion.peek
-local OnEvent, Children = fusion.OnEvent, fusion.Children
-
-type scope<T> = fusion.Scope<T>
-type used_as<T> = fusion.UsedAs<T>
-type child = fusion.Child
+local create = vide.create
+local source = vide.source
+local spring = vide.spring
 
 local COLOUR_BLACK = Color3.new(0, 0, 0)
 local COLOUR_WHITE = Color3.new(1, 1, 1)
@@ -21,28 +19,31 @@ local BG_FADE_SPEED = 35
 local CORNER_RADIUS = UDim.new(0, 4)
 local PADDING = UDim2.fromOffset(6, 4)
 
-return function(
-	scope: scope<typeof(fusion)>,
-	props: {
-		Name: used_as<string>?,
-		Parent: used_as<Instance>,
+return function(props: {
+	Name: types.source<string>?,
+	Parent: types.source<Instance>,
 
-		LayoutOrder: used_as<number>?,
-		Position: used_as<UDim2>?,
-		AnchorPoint: used_as<Vector2>?,
-		ZIndex: used_as<number>?,
-		Size: used_as<UDim2>?,
-		AutomaticSize: used_as<Enum.AutomaticSize>?,
+	LayoutOrder: types.source<number>?,
+	Position: types.source<UDim2>?,
+	AnchorPoint: types.source<Vector2>?,
+	ZIndex: types.source<number>?,
+	Size: types.source<UDim2>?,
+	AutomaticSize: types.source<Enum.AutomaticSize>?,
 
-		Text: used_as<string>?,
-		disabled: used_as<boolean>?,
-		on_click: (() -> ())?,
-	}
-): child
-	local is_hovering = scope:Value(false)
-	local is_held_down = scope:Value(false)
+	Text: types.source<string>?,
 
-	return scope:New("TextButton")({
+	disabled: types.source<boolean>?,
+	on_click: (() -> ())?,
+
+	[string]: types.source<unknown>,
+}): Instance
+	local is_hovering = source(false)
+	local is_held_down = source(false)
+
+	local disabled = props.disabled or source(false)
+	local on_click = props.on_click or function() end
+
+	local properties = {
 		Name = props.Name,
 		Parent = props.Parent,
 
@@ -56,50 +57,60 @@ return function(
 		Text = props.Text,
 		TextColor3 = COLOUR_TEXT,
 
-		BackgroundColor3 = scope:Spring(
-			scope:Computed(function(use)
-				return if use(props.disabled)
-					then COLOUR_BG_DISABLED
-					elseif use(is_held_down) then COLOUR_BG_HELD
-					elseif use(is_hovering) then COLOUR_BG_HOVER
-					else COLOUR_BG_REST
-			end),
+		BackgroundColor3 = spring(function()
+			return if disabled()
+				then COLOUR_BG_DISABLED
+				elseif is_held_down() then COLOUR_BG_HELD
+				elseif is_hovering() then COLOUR_BG_HOVER
+				else COLOUR_BG_REST
+		end, BG_FADE_SPEED),
 
-			BG_FADE_SPEED
-		),
-
-		[OnEvent("Activated")] = function()
-			if props.on_click ~= nil and not peek(props.disabled) then
-				props.on_click()
+		Activated = function()
+			if on_click ~= nil and not disabled() then
+				on_click()
 			end
 		end,
 
-		[OnEvent("MouseButton1Down")] = function()
-			is_held_down:set(true)
+		MouseButton1Down = function()
+			is_held_down(true)
 		end,
-		[OnEvent("MouseButton1Up")] = function()
-			is_held_down:set(false)
-		end,
-
-		[OnEvent("MouseEnter")] = function()
-			is_hovering:set(true)
-		end,
-		[OnEvent("MouseLeave")] = function()
-			is_held_down:set(false)
-			is_hovering:set(false)
+		MouseButton1Up = function()
+			is_held_down(false)
 		end,
 
-		[Children] = {
-			scope:New("UICorner")({
-				CornerRadius = CORNER_RADIUS,
-			}),
+		MouseEnter = function()
+			is_hovering(true)
+		end,
+		MouseLeave = function()
+			is_held_down(false)
+			is_hovering(false)
+		end,
+	}
 
-			scope:New("UIPadding")({
-				PaddingTop = PADDING.Y,
-				PaddingBottom = PADDING.Y,
-				PaddingLeft = PADDING.X,
-				PaddingRight = PADDING.X,
-			}),
-		},
-	})
+	local children = {
+		create("UICorner")({
+			CornerRadius = CORNER_RADIUS,
+		}),
+
+		create("UIPadding")({
+			PaddingTop = PADDING.Y,
+			PaddingBottom = PADDING.Y,
+			PaddingLeft = PADDING.X,
+			PaddingRight = PADDING.X,
+		}),
+	}
+
+	for name, value in pairs(props) do
+		if not properties[name] then
+			properties[name] = value
+		end
+	end
+
+	local instance = create("TextButton")(properties)
+
+	for name, child in pairs(children) do
+		child.Parent = instance
+	end
+
+	return instance
 end

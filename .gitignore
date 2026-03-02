@@ -10,8 +10,8 @@
 *_packages
 .pesde
 
-# rojo
-sourcemap.json
-
 # mocha
 build/
+
+# dev
+sourcemap.json

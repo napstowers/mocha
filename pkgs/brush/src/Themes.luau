@@ -6,51 +6,51 @@
 local types = require("../roblox_packages/types")
 
 return {
-	Dark = {
-		Background = {
-			Primary = Color3.fromRGB(20, 20, 20),
-			Secondary = Color3.fromRGB(50, 50, 50),
+	dark = {
+		background = {
+			primary = Color3.fromRGB(20, 20, 20),
+			secondary = Color3.fromRGB(50, 50, 50),
 		},
 
-		ScrollBar = {
-			Primary = Color3.fromRGB(255, 255, 255),
+		scrollbar = {
+			primary = Color3.fromRGB(255, 255, 255),
 		},
 
-		Text = {
-			Primary = Color3.fromRGB(255, 255, 255),
-			Secondary = Color3.fromRGB(200, 200, 200),
+		text = {
+			primary = Color3.fromRGB(255, 255, 255),
+			secondary = Color3.fromRGB(200, 200, 200),
 
-			Warn = Color3.fromRGB(255, 238, 110),
-			Error = Color3.fromRGB(255, 99, 99),
+			warning = Color3.fromRGB(255, 238, 110),
+			error = Color3.fromRGB(255, 99, 99),
 		},
 
-		Image = {
-			Primary = Color3.fromRGB(255, 255, 255),
-			Secondary = Color3.fromRGB(200, 200, 200),
+		image = {
+			primary = Color3.fromRGB(255, 255, 255),
+			secondary = Color3.fromRGB(200, 200, 200),
 		},
 	},
 
-	Light = {
-		Background = {
-			Primary = Color3.fromRGB(235, 235, 235),
-			Secondary = Color3.fromRGB(180, 180, 180),
+	light = {
+		background = {
+			primary = Color3.fromRGB(235, 235, 235),
+			secondary = Color3.fromRGB(180, 180, 180),
 		},
 
-		ScrollBar = {
-			Primary = Color3.fromRGB(0, 0, 0),
+		scrollbar = {
+			primary = Color3.fromRGB(0, 0, 0),
 		},
 
-		Text = {
-			Primary = Color3.fromRGB(0, 0, 0),
-			Secondary = Color3.fromRGB(50, 50, 50),
+		text = {
+			primary = Color3.fromRGB(0, 0, 0),
+			secondary = Color3.fromRGB(50, 50, 50),
 
-			Warn = Color3.fromRGB(255, 238, 110),
-			Error = Color3.fromRGB(255, 99, 99),
+			warning = Color3.fromRGB(255, 238, 110),
+			error = Color3.fromRGB(255, 99, 99),
 		},
 
-		Image = {
-			Primary = Color3.fromRGB(0, 0, 0),
-			Secondary = Color3.fromRGB(50, 50, 50),
+		image = {
+			primary = Color3.fromRGB(0, 0, 0),
+			secondary = Color3.fromRGB(50, 50, 50),
 		},
 	},
 } :: { [string]: types.theme }

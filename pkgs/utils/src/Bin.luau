@@ -10,7 +10,7 @@ export type bin = {
 
 	remove: (identifier: string) -> (),
 	empty: () -> (),
-}
+} | nil
 
 local bins = {} :: { [string]: bin }
 
@@ -43,7 +43,7 @@ function remove_item(bin_item: bin_item): boolean
 	return true
 end
 
-function new(identifier: string?): bin
+function new(identifier: string?): bi 
 	local bin_storage = {} :: { [string]: bin_item }
 	local bin = {}
 

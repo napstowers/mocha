@@ -1,0 +1,23 @@
+{
+  "name": "mocha",
+  "globIgnorePaths": [ "*/**/pesde.*" ],
+
+  "tree": {
+    "$className": "DataModel",
+    "$ignoreUnknownInstances": true,
+
+    "ServerScriptService": {
+      "$ignoreUnknownInstances": true,
+
+      "mocha": {
+        "$ignoreUnknownInstances": true,
+        "$path": "plugin/src",
+
+        "roblox_packages": {
+          "$ignoreUnknownInstances": true,
+          "$path": "plugin/roblox_packages"
+        }
+      }
+    }
+  }
+}

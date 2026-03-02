@@ -13,32 +13,32 @@ export type studio_settings = typeof(settings().Studio) & {
 export type converter = {
 	name: string,
 
-	isConvertable: (Instance) -> (boolean, string?),
+	is_convertable: (Instance) -> (boolean, string?),
 	convert: (Instance) -> Instance,
 }
 
 -- brush theme type
 export type theme = {
-	Background: {
-		Primary: Color3,
-		Secondary: Color3,
+	background: {
+		primary: Color3,
+		secondary: Color3,
 	},
 
-	ScrollBar: {
-		Primary: Color3,
+	scrollbar: {
+		primary: Color3,
 	},
 
-	Text: {
-		Primary: Color3,
-		Secondary: Color3,
+	text: {
+		primary: Color3,
+		secondary: Color3,
 
-		Warn: Color3,
-		Error: Color3,
+		warning: Color3,
+		error: Color3,
 	},
 
-	Image: {
-		Primary: Color3,
-		Secondary: Color3,
+	image: {
+		primary: Color3,
+		secondary: Color3,
 	},
 }
 

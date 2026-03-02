@@ -1,17 +1,14 @@
-name = "mocha_tc/plugin"
+name = "mocha_tc/plugin_build"
 version = "0.1.0"
 description = "a tc to v5.5 client object converter"
 authors = ["Primiti_ve", "Ice"]
 license = "MIT"
 
-# this isn't set to private because instead of plugin_build having all of the plugin gui stuff,
-# it just builds it from here
-# this means we could probably publish this?
+# it's the plugin. it doesn't need to be published
+private = true
 
 [target]
 environment = "roblox"
-lib = "src/init.luau"
-build_files = ["src"]
 
 [indices]
 default = "https://github.com/pesde-pkg/index"
@@ -32,8 +29,4 @@ pesde = "^0.7.0"
 lune = "^0.10.2"
 
 [dependencies]
-vide = { wally = "centau/vide", version = "^0.3.0" }
-converter = { workspace = "mocha_tc/converter", version = "^" }
-logger = { workspace = "mocha_tc/logger", version = "^" }
-brush = { workspace = "mocha_tc/brush", version = "^" }
-utils = { workspace = "mocha_tc/utils", version = "^" }
+plugin = { workspace = "mocha_tc/plugin", version = "^" }

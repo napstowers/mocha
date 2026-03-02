@@ -2,9 +2,6 @@ name = "mocha_tc/root"
 version = "0.0.0"
 private = true
 
-# added plugin purely for convenience, lmao
-# i don't wanna have to do `pesde install` two times in different directories
-# (actually wouldn't it be four? i do `pesde install` twice because some dependencies may not update with the latest version)
 workspace_members = ["pkgs/*", "plugin"]
 
 [target]
