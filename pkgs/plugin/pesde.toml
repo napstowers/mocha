@@ -1,12 +1,8 @@
 name = "mocha_tc/plugin"
 version = "0.1.0"
-description = "a tc to v5.5 client object converter"
+description = "the plugin & ui for the mocha project"
 authors = ["Primiti_ve", "Ice"]
 license = "MIT"
-
-# this isn't set to private because instead of plugin_build having all of the plugin gui stuff,
-# it just builds it from here
-# this means we could probably publish this?
 
 [target]
 environment = "roblox"
@@ -32,8 +28,9 @@ pesde = "^0.7.0"
 lune = "^0.10.2"
 
 [dependencies]
-vide = { wally = "centau/vide", version = "^0.3.0" }
+vide = { wally = "alicesaidhi/vide", version = "^0.3.1-lite.656" }
+videkit_ty = { name = "jmesrje/videkit_ty", version = "^0.1.1" }
 converter = { workspace = "mocha_tc/converter", version = "^" }
 logger = { workspace = "mocha_tc/logger", version = "^" }
-brush = { workspace = "mocha_tc/brush", version = "^" }
 utils = { workspace = "mocha_tc/utils", version = "^" }
+

@@ -8,26 +8,25 @@ local utils = require("../roblox_packages/utils")
 local widget = {}
 widget.__index = widget
 
-function widget.new(widget_title: string, WidgetSize: Vector2)
+function widget.new(widget_title: string, widget_size: Vector2)
 	local self = setmetatable({}, widget)
-
+	
 	self.widget_title = widget_title
-
 	self.widget_info = DockWidgetPluginGuiInfo.new(
 		Enum.InitialDockState.Float,
 		false,
 		false,
-		WidgetSize.X,
-		WidgetSize.Y,
-		WidgetSize.X,
-		WidgetSize.Y
+		widget_size.X,
+		widget_size.Y,
+		widget_size.X,
+		widget_size.Y
 	)
 
 	return self
 end
 
-function widget:create_widget(base_gui: Instance?)
-	if self.widget or not self.widget_title or not self.widget_info then
+function widget:create_widget()
+	if self.widget or not self.widget_info then
 		return self
 	end
 
@@ -37,29 +36,10 @@ function widget:create_widget(base_gui: Instance?)
 		return self
 	end
 
-	self.widget = plugin:CreateDockWidgetPluginGui(self.widget_title, self.widget_info)
-
-	if base_gui then
-		for _, child in pairs(base_gui:GetChildren()) do
-			self:append(child)
-		end
-
-		base_gui:Destroy()
-	end
+	self.widget = plugin:CreateDockWidgetPluginGuiAsync(self.widget_title, self.widget_info)
+	self.widget.Title = self.widget_title
 
 	return self
-end
-
-function widget:get(name: string)
-	if name == "widget" then
-		if not self.widget then
-			return nil
-		end
-
-		return self.widget
-	end
-
-	return nil
 end
 
 function widget:create_toolbar(toolbar_title: string)
@@ -101,7 +81,7 @@ function widget:create_button(button_name: string, button_description: string, b
 	return self
 end
 
-function widget:append(Object: Instance)
+function widget:add(Object: Instance)
 	if not self.widget then
 		return self
 	end

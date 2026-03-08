@@ -5,9 +5,6 @@ name = "mocha_tc/root"
 version = "0.0.0"
 target = "roblox"
 
-[workspace."mocha_tc/brush"]
-roblox = "pkgs/brush"
-
 [workspace."mocha_tc/converter"]
 roblox = "pkgs/converter"
 

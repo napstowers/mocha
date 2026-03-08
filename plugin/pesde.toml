@@ -1,10 +1,9 @@
 name = "mocha_tc/plugin_build"
 version = "0.1.0"
 description = "a tc to v5.5 client object converter"
-authors = ["Primiti_ve", "Ice"]
 license = "MIT"
 
-# it's the plugin. it doesn't need to be published
+# it's the plugin! it doesn't need to be published
 private = true
 
 [target]

@@ -1,7 +1,6 @@
 name = "mocha_tc/types"
 version = "0.1.0"
-description = "a tc to v5.5 client object converter"
-authors = ["Primiti_ve", "Ice"]
+description = "a collection of types for the mocha project"
 license = "MIT"
 
 [target]

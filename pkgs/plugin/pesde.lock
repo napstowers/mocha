@@ -59,6 +59,21 @@ frktest = [{ name = "itsfrank/frktest", version = "^0.0.4", index = "https://git
 greentea = [{ name = "jiwonz/greentea_luau", version = "^0.2.0", index = "https://github.com/pesde-pkg/index", target = "luau" }, "standard"]
 luau_path = [{ name = "jiwonz/luau_path", version = "^0.2.0", index = "https://github.com/pesde-pkg/index", target = "luau" }, "standard"]
 
+[graph."jmesrje/videkit_ty@0.1.1 roblox"]
+direct = ["videkit_ty", { name = "jmesrje/videkit_ty", version = "^0.1.1", index = "default" }, "standard"]
+
+[graph."jmesrje/videkit_ty@0.1.1 roblox".dependencies]
+vide = ["wally#alicesaidhi/vide@0.3.1-lite.672 roblox", "standard"]
+
+[graph."jmesrje/videkit_ty@0.1.1 roblox".pkg_ref]
+ref_ty = "pesde"
+index_url = "https://github.com/pesde-pkg/index"
+
+[graph."jmesrje/videkit_ty@0.1.1 roblox".pkg_ref.dependencies]
+rojo = [{ name = "pesde/rojo", version = "^7.4.4", index = "https://github.com/pesde-pkg/index", target = "lune" }, "dev"]
+scripts = [{ name = "pesde/scripts_rojo", version = "^0.1.0", index = "https://github.com/pesde-pkg/index", target = "lune" }, "dev"]
+vide = [{ wally = "wally#alicesaidhi/vide", version = "^0.3.1-lite.656", index = "https://github.com/UpliftGames/wally-index" }, "standard"]
+
 [graph."lukadev_0/option@1.2.1 lune".pkg_ref]
 ref_ty = "pesde"
 index_url = "https://github.com/pesde-pkg/index"
@@ -66,25 +81,6 @@ index_url = "https://github.com/pesde-pkg/index"
 [graph."lukadev_0/result@1.2.1 lune".pkg_ref]
 ref_ty = "pesde"
 index_url = "https://github.com/pesde-pkg/index"
-
-[graph."mocha_tc/brush@0.1.0 roblox"]
-direct = ["brush", { workspace = "mocha_tc/brush", version = "^" }, "standard"]
-
-[graph."mocha_tc/brush@0.1.0 roblox".dependencies]
-logger = ["mocha_tc/logger@0.1.0 roblox", "standard"]
-types = ["mocha_tc/types@0.1.0 roblox", "standard"]
-utils = ["mocha_tc/utils@0.1.0 roblox", "standard"]
-
-[graph."mocha_tc/brush@0.1.0 roblox".pkg_ref]
-ref_ty = "workspace"
-path = "pkgs/brush"
-
-[graph."mocha_tc/brush@0.1.0 roblox".pkg_ref.dependencies]
-logger = [{ workspace = "mocha_tc/logger", version = "^" }, "standard"]
-rojo = [{ name = "pesde/rojo", version = "^7.5.1", index = "https://github.com/pesde-pkg/index", target = "lune" }, "dev"]
-scripts = [{ name = "pesde/scripts_rojo", version = "^0.2.0", index = "https://github.com/pesde-pkg/index", target = "lune" }, "dev"]
-types = [{ workspace = "mocha_tc/types", version = "^" }, "standard"]
-utils = [{ workspace = "mocha_tc/utils", version = "^" }, "standard"]
 
 [graph."mocha_tc/converter@0.1.0 roblox"]
 direct = ["converter", { workspace = "mocha_tc/converter", version = "^" }, "standard"]
@@ -211,9 +207,9 @@ luau_lsp = [{ name = "pesde/luau_lsp", version = "^1.55.0", index = "https://git
 selene = [{ name = "pesde/selene", version = "^0.29.0", index = "https://github.com/pesde-pkg/index", target = "lune" }, "dev"]
 stylua = [{ name = "pesde/stylua", version = "^2.3.0", index = "https://github.com/pesde-pkg/index", target = "lune" }, "dev"]
 
-[graph."wally#centau/vide@0.3.1 roblox"]
-direct = ["vide", { wally = "wally#centau/vide", version = "^0.3.0", index = "default" }, "standard"]
+[graph."wally#alicesaidhi/vide@0.3.1-lite.672 roblox"]
+direct = ["vide", { wally = "wally#alicesaidhi/vide", version = "^0.3.1-lite.656", index = "default" }, "standard"]
 
-[graph."wally#centau/vide@0.3.1 roblox".pkg_ref]
+[graph."wally#alicesaidhi/vide@0.3.1-lite.672 roblox".pkg_ref]
 ref_ty = "wally"
 index_url = "https://github.com/UpliftGames/wally-index"

@@ -7,9 +7,11 @@
 - you need a github account!
 
 ## 1. getting started
-- fork the mocha repository
+- clone the mocha repository
 - install rokit tools by running `rokit install` in a terminal
-- install pesde packages by running `pesde install` in a terminal
+- install pesde packages by running `lune run repkg` in a terminal
+- install the rojo plugin by running `rojo plugin install` in a terminal
+- serve the mocha plugin via rojo by running `lune run serve` in a terminal
 
 ## 2. making changes
 - i recommend using these extensions:

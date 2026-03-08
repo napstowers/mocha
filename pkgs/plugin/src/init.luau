@@ -4,33 +4,34 @@
 -- author(s): Primiti_ve
 
 local converter = require("./roblox_packages/converter")
-local brush = require("./roblox_packages/brush")
 local utils = require("./roblox_packages/utils")
 
+local app = require("@self/ui/app")
 local widget_class = require("@self/widget")
 
-local assets = script:WaitForChild("assets") :: Instance & { [string]: Instance }
+local plugin_class = {}
 
-function build(plugin_global: unknown)
-	local gui = assets.gui:Clone()
-
+function plugin_class.build(plugin_global: unknown)
 	utils.plugin_global.set(plugin_global)
 
 	local widget_size = Vector2.new(450, 250)
 	local plugin_widget = widget_class.new("mocha", widget_size)
 
-	plugin_widget:create_widget(gui)
+	plugin_widget:create_widget()
+
+	app {
+		parent = plugin_widget.widget,
+	}
+
 	plugin_widget:create_toolbar("mocha")
 	plugin_widget:create_button("mocha", "a tc to v5.5 co converter", "rbxassetid://100158613404254")
 
-	local widget = plugin_widget:get("widget")
 	local environment = {
 		modules = {
-			brush = brush,
 			converter = converter,
 		},
 
-		widget = widget,
+		widget = plugin_widget,
 
 		exports = {
 			plugin_global = utils.plugin_global,
@@ -40,6 +41,4 @@ function build(plugin_global: unknown)
 	print(environment)
 end
 
-return {
-	build = build,
-}
+return plugin_class

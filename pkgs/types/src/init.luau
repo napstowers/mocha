@@ -17,29 +17,4 @@ export type converter = {
 	convert: (Instance) -> Instance,
 }
 
--- brush theme type
-export type theme = {
-	background: {
-		primary: Color3,
-		secondary: Color3,
-	},
-
-	scrollbar: {
-		primary: Color3,
-	},
-
-	text: {
-		primary: Color3,
-		secondary: Color3,
-
-		warning: Color3,
-		error: Color3,
-	},
-
-	image: {
-		primary: Color3,
-		secondary: Color3,
-	},
-}
-
 return nil
